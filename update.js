@@ -20,3 +20,18 @@ function removeIteminCart(item){
     });
 }
 removeIteminCart(id);
+
+
+// fetch cart
+const cartData =  fetch('/cart.json')
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem('cart', JSON.stringify(data));
+      })
+      .catch(error => {
+        // Handle errors
+        console.error(error);
+      });
+      const cartJson = localStorage.getItem('cart');
+      const cartResult = JSON.parse(cartJson);
+      console.log(cartResult)
